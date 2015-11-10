@@ -18,14 +18,14 @@ package cxx.bluetooth.client.pbap;
 
 import android.util.Log;
 
-import cxx.android.vcard.VCardEntry;
-import cxx.bluetooth.client.pbap.utils.ObexAppParameters;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.obex.HeaderSet;
+
+import cxx.android.vcard.VCardEntry;
+import cxx.bluetooth.client.pbap.utils.ObexAppParameters;
 
 final class BluetoothPbapRequestPullPhoneBook extends BluetoothPbapRequest {
 
@@ -58,7 +58,8 @@ final class BluetoothPbapRequestPullPhoneBook extends BluetoothPbapRequest {
 
         /* make sure format is one of allowed values */
         if (format != BluetoothPbapClient.VCARD_TYPE_21
-                && format != BluetoothPbapClient.VCARD_TYPE_30) {
+                && format != BluetoothPbapClient.VCARD_TYPE_30
+                && format != BluetoothPbapClient.VCARD_TYPE_40) {
             format = BluetoothPbapClient.VCARD_TYPE_21;
         }
 
