@@ -17,10 +17,10 @@ package cxx.android.vcard;
 
 import android.util.Log;
 
-import cxx.android.vcard.exception.VCardException;
-
 import java.io.IOException;
 import java.util.Set;
+
+import cxx.android.vcard.exception.VCardException;
 
 /**
  * <p>
@@ -36,7 +36,7 @@ import java.util.Set;
  * @hide
  */
 /* package */ class VCardParserImpl_V30 extends VCardParserImpl_V21 {
-    private static final String LOG_TAG = VCardConstants.LOG_TAG;
+    private static final String LOG_TAG = "VCardParserImpl_V30";
 
     private String mPreviousLine;
     private boolean mEmittedAgentWarning = false;

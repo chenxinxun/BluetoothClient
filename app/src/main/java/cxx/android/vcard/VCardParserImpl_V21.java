@@ -19,12 +19,6 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
-import cxx.android.vcard.exception.VCardAgentNotSupportedException;
-import cxx.android.vcard.exception.VCardException;
-import cxx.android.vcard.exception.VCardInvalidCommentLineException;
-import cxx.android.vcard.exception.VCardInvalidLineException;
-import cxx.android.vcard.exception.VCardVersionException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +30,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import cxx.android.vcard.exception.VCardAgentNotSupportedException;
+import cxx.android.vcard.exception.VCardException;
+import cxx.android.vcard.exception.VCardInvalidCommentLineException;
+import cxx.android.vcard.exception.VCardInvalidLineException;
+import cxx.android.vcard.exception.VCardVersionException;
+
 /**
  * <p>
  * Basic implementation achieving vCard parsing. Based on vCard 2.1.
@@ -43,7 +43,7 @@ import java.util.Set;
  * @hide
  */
 /* package */ class VCardParserImpl_V21 {
-    private static final String LOG_TAG = VCardConstants.LOG_TAG;
+    private static final String LOG_TAG = "VCardParserImpl_V21";
 
     protected static final class CustomBufferedReader extends BufferedReader {
         private long mTime;
@@ -158,7 +158,8 @@ import java.util.Set;
     }
 
     public VCardParserImpl_V21(int vcardType) {
-        mIntermediateCharset =  VCardConfig.DEFAULT_INTERMEDIATE_CHARSET;
+       // mIntermediateCharset =  VCardConfig.DEFAULT_INTERMEDIATE_CHARSET;
+        mIntermediateCharset =  VCardConfig.DEFAULT_IMPORT_CHARSET;
     }
 
     /**

@@ -28,7 +28,7 @@ import java.util.Set;
  * but in VCardUtils.
  */
 public class VCardConfig {
-    private static final String LOG_TAG = VCardConstants.LOG_TAG;
+    private static final String LOG_TAG = "VCardConfig";
 
     /* package */ static final int LOG_LEVEL_NONE = 0;
     /* package */ static final int LOG_LEVEL_PERFORMANCE_MEASUREMENT = 0x1;

@@ -22,8 +22,6 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.util.Log;
 
-import cxx.android.vcard.exception.VCardException;
-
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
@@ -37,11 +35,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import cxx.android.vcard.exception.VCardException;
+
 /**
  * Utilities for VCard handling codes.
  */
 public class VCardUtils {
-    private static final String LOG_TAG = VCardConstants.LOG_TAG;
+    private static final String LOG_TAG = "VCardUtils";
 
     /**
      * See org.apache.commons.codec.DecoderException

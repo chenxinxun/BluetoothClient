@@ -16,8 +16,6 @@
 
 package cxx.android.vcard;
 
-import cxx.android.vcard.VCardUtils.PhoneNumberUtilsPort;
-
 import android.accounts.Account;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
@@ -52,6 +50,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cxx.android.vcard.VCardUtils.PhoneNumberUtilsPort;
+
 /**
  * Represents one vCard entry, which should start with "BEGIN:VCARD" and end
  * with "END:VCARD". This class is for bridging between real vCard data and
@@ -66,7 +66,7 @@ import java.util.Map;
  * {@link #isIgnorable()}.
  */
 public class VCardEntry {
-    private static final String LOG_TAG = VCardConstants.LOG_TAG;
+    private static final String LOG_TAG = "VCardEntry";
 
     private static final int DEFAULT_ORGANIZATION_TYPE = Organization.TYPE_WORK;
 

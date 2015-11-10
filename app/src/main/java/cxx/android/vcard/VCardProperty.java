@@ -58,7 +58,7 @@ import java.util.Map;
  * separable or not is specified by vCard specs.
  */
 public class VCardProperty {
-    private static final String LOG_TAG = VCardConstants.LOG_TAG;
+    private static final String LOG_TAG = "VCardProperty";
     private String mName;
     private List<String> mGroupList;
 

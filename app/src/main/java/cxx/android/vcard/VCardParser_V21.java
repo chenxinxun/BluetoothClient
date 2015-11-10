@@ -15,14 +15,14 @@
  */
 package cxx.android.vcard;
 
-import cxx.android.vcard.exception.VCardException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
+import cxx.android.vcard.exception.VCardException;
 
 /**
  * </p>
@@ -46,7 +46,7 @@ public final class VCardParser_V21 extends VCardParser {
      */
     /* package */ static final Set<String> sKnownPropertyNameSet =
             Collections.unmodifiableSet(new HashSet<String>(
-                    Arrays.asList("BEGIN", "END", "LOGO", "PHOTO", "LABEL", "FN", "TITLE", "SOUND",
+                    Arrays.asList("BEGIN", "END", "N" , "LOGO", "PHOTO", "LABEL", "FN", "TITLE", "SOUND",
                             "VERSION", "TEL", "EMAIL", "TZ", "GEO", "NOTE", "URL",
                             "BDAY", "ROLE", "REV", "UID", "KEY", "MAILER")));
 

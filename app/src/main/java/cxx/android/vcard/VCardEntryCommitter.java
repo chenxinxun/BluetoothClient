@@ -38,7 +38,7 @@ import java.util.ArrayList;
  * </P>
  */
 public class VCardEntryCommitter implements VCardEntryHandler {
-    public static String LOG_TAG = VCardConstants.LOG_TAG;
+    public static String LOG_TAG = "VCardEntryCommitter";
 
     private final ContentResolver mContentResolver;
     private long mTimeToCommit;

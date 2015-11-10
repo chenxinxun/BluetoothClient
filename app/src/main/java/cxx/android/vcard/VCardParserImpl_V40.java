@@ -28,7 +28,7 @@ import java.util.Set;
  * @hide
  */
 /* package */ class VCardParserImpl_V40 extends VCardParserImpl_V30 {
-    // private static final String LOG_TAG = VCardConstants.LOG_TAG;
+    // private static final String LOG_TAG = "VCardParserImpl_V40";
 
     public VCardParserImpl_V40() {
         super();
