@@ -176,6 +176,11 @@ public class BluetoothPbapClient {
      */
     public static final byte VCARD_TYPE_30 = 1;
 
+    /**
+     * cxx ++
+     * Vcard format version 4.0
+     */
+    public static final byte VCARD_TYPE_40 = 2;
     /* 64-bit mask used to filter out VCard fields */
     // TODO: Think of extracting to separate class
     public static final long VCARD_ATTR_VERSION = 0x000000000000000001;
