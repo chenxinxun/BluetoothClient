@@ -1,20 +1,20 @@
 package cxx.android.bluetooth;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Set;
+
 
 import javax.obex.ObexTransport;
 
@@ -23,7 +23,14 @@ import cxx.android.vcard.VCardEntryCommitter;
 import cxx.bluetooth.client.pbap.BluetoothPbapClient;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "cxx.bluetooth.client";
-    private BluetoothAdapter mBluetoothAdapter;
+    private Button mSimContactbtn;
+    private Button mContactbtn;
+    private ListView mBlueDevices;
+    private DeviceMaintain maintain = new DeviceMaintain();
+    private BluetoothPbapClient client;
+
+
+
     private BluetoothSocket mSocket;
     private  ObexTransport mTransport;
     private static final String PBAP_UUID =
@@ -43,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 default:
-
+                    client.disconnect();
             }
         }
     };
@@ -51,31 +58,46 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mContactbtn = (Button)findViewById(R.id.contact);
+        mContactbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+
+
             }
         });
+        mSimContactbtn = (Button)findViewById(R.id.simcontact);
+
+        mSimContactbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+        mBlueDevices = (ListView)findViewById(R.id.bluetoothdevice);
+        mBlueDevices.setAdapter(new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                maintain.getDevicesName()
+        ));
         connect();
     }
     void connect(){
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        Set<BluetoothDevice> devices =  mBluetoothAdapter.getBondedDevices();
-        for (BluetoothDevice device: devices) {
-            try {
-               // mSocket = device.createRfcommSocketToServiceRecord(UUID.fromString(PBAP_UUID));
-                BluetoothPbapClient client = new BluetoothPbapClient(device,handler);
-                client.connect();
-                boolean flg =   client.pullPhoneBook(BluetoothPbapClient.PB_PATH);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        try {
+            mBlueDevices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String devcieName = (String) mBlueDevices.getItemAtPosition(position);
+                    BluetoothDevice device = maintain.getDeviceFromName(devcieName);
+                    client = new BluetoothPbapClient(device, handler);
+                    client.connect();
+                    boolean flg = client.pullPhoneBook(BluetoothPbapClient.PB_PATH);
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
