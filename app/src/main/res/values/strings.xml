@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">BlueClient</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">设置</string>
+    <string name="simcontact">读取sim手机通讯录</string>
+    <string name="contact">读取手机通讯录</string>
+    <string name="state">状态</string>
 </resources>
