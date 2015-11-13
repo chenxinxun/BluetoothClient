@@ -78,6 +78,15 @@ public class VCardEntryCommitter implements VCardEntryHandler {
         mTimeToCommit += System.currentTimeMillis() - start;
     }
 
+    /**
+     * todo modify this for better insert one by one or not patch contact person information
+     * @param vcardEntry
+     */
+    public void onEntryCreateNoPatch(final VCardEntry vcardEntry){
+        mOperationList = vcardEntry.constructInsertOperations(mContentResolver, mOperationList);
+        mCreatedUris.add(pushIntoContentResolver(mOperationList));
+        mOperationList = null;
+    }
     private Uri pushIntoContentResolver(ArrayList<ContentProviderOperation> operationList) {
         try {
             final ContentProviderResult[] results = mContentResolver.applyBatch(
